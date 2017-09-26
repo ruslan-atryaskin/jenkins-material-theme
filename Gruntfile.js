@@ -191,13 +191,19 @@ module.exports = function (grunt) {
 
         fileExists: {
             scripts: Object.keys(lessFiles)
-        }
+        },
 
+        copy: {
+            main: {
+                expand: true,
+                cwd: "dist",
+                src: "material-fuel.css",
+                dest: 'theme-final'
+            }
+        }
     });
 
     // Default task(s).
-    grunt.registerTask('default', ['clean', 'file-creator', 'imagemin', 'less', 'replace', 'cssmin', 'postcss']);
+    grunt.registerTask('default', ['clean', 'file-creator', 'imagemin', 'less', 'replace', 'cssmin', 'postcss', 'copy']);
     grunt.registerTask('test', ['default', 'fileExists']);
-
-
 };
